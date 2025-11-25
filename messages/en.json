@@ -1,0 +1,194 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "chat": "Chat",
+    "signIn": "Sign in",
+    "admin": "Admin"
+  },
+  "HomePage": {
+    "title": "Vaccine *highlight* Your Way.",
+    "highlight": "Knowledge.",
+    "subtitle": "AI-powered, fast, reliable, and patient-friendly.",
+    "button": "Register now!",
+    "button2": "Ask a vaccine question"
+  },
+  "SignInPage": {
+    "title": "Welcome Back!",
+    "subtitle": "Sign in to access your personalized healthcare assistant.",
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "newAccount": "Create a new account?",
+      "forgetPassword": "Forget password?"
+    },
+    "button": "Sign in"
+  },
+  "SignUpPage": {
+    "title": "Join us today!",
+    "subtitle": "Create your account to start your healthcare journey.",
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "phone": "Phone",
+      "birthYear": "Birth year",
+      "country": "Country",
+      "state": "State",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "alreadyAccount": "Already have an account?",
+      "privacyPolicyText": "By clicking sign up, you agree to our",
+      "privacyPolicyLink": "Privacy Policy"
+    },
+    "button": "Sign up"
+  },
+  "AdminNavigation": {
+    "Users": "Users",
+    "Reports": "Reports",
+    "Models": "Models",
+    "Get Jsonl": "Get Jsonl"
+  },
+  "AdminUsersPage": {
+    "title": "Users",
+    "subtitle": "Manage users and their data.",
+    "table": {
+      "NAME": "NAME",
+      "STATUS": "STATUS",
+      "ROLE": "ROLE",
+      "ACTIONS": "ACTIONS"
+    },
+    "tooltip": {
+      "chatHistory": "Chat history",
+      "resetPassword": "Reset password",
+      "delete": "Delete user"
+    }
+  },
+  "AdminReportsPage": {
+    "title": "Reports",
+    "subtitle": "View and manage reports.",
+    "table": {
+      "TITLE": "TITLE",
+      "REPORTED_BY": "REPORTED BY",
+      "REPORTED_ON": "REPORTED ON",
+      "STATUS": "STATUS",
+      "ACTIONS": "ACTIONS"
+    },
+    "tooltip": {
+      "details": "Details",
+      "delete": "Delete report"
+    }
+  },
+  "ChatsPage": {
+    "chatHistory": "Chat history",
+    "conversation": "Conversation",
+    "noConversation": "No conversations found.",
+    "startNewConversation": "Start a new conversation",
+    "initialMessage": "Hi, I’m Aiden, answering all your vaccine questions! How can we help? If you don’t think the response is accurate or up to standards, let us know!",
+    "refer": {
+      "title": "Refer a Friend",
+      "description": "Know someone who could benefit from VaxSupport? Spread the word and share it with them!",
+      "button": "Share now!"
+    },
+    "feedback": {
+      "title": "Submit feedback",
+      "description": "Was there a response that wasn’t helpful or transparent enough? Tell us about it!",
+      "button": "Submit feedback"
+    },
+    "enhancements": {
+      "title": "Enhancements",
+      "description": "Is there a feature you’d like to see built to support vaccine decisions?",
+      "button": "Request enhancements"
+    }
+  },
+  "ProfileDropdown": {
+    "signedInAs": "Signed in as",
+    "mySettings": "My Profile",
+    "report": "Report an issue",
+    "logOut": "Log out"
+  },
+  "ResetPasswordConfirmationModal": {
+    "title": "Reset user password",
+    "message": "Are you sure you want to reset this user's password? This action is irreversible.",
+    "cancel": "Cancel",
+    "confirm": "Reset password"
+  },
+  "ViewReportModal": {
+    "modalTitle": "Report details",
+    "title": "Title",
+    "description": "Description",
+    "close": "Close",
+    "markAsResolved": "Mark as resolved",
+    "markAsOpen": "Mark as open"
+  },
+  "ReportIssueModal": {
+    "modalTitle": "Report an issue",
+    "title": "Title",
+    "description": "Description",
+    "cancel": "Cancel",
+    "confirm": "Report"
+  },
+  "ShareWithFriendModal": {
+    "modalTitle": "Share with a friend",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "cancel": "Cancel",
+    "confirm": "Send"
+  },
+  "ForgetPasswordModal": {
+    "modalTitle": "Reset password",
+    "email": "Email",
+    "cancel": "Cancel",
+    "confirm": "Reset"
+  },
+  "ProfilePage": {
+    "profileTitle": "Profile Information",
+    "profileDescription": "View and edit your profile information.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "cancel": "Cancel",
+    "updateProfile": "Update profile",
+    "privacyTitle": "Privacy",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "privacyDescription": "Control your privacy settings.",
+    "updatePassword": "Update password",
+    "myReportsTitle": "My Reports",
+    "myReportsDescription": "Issues reported by you along with their current status.",
+    "deleteAccountTitle": "Delete Account",
+    "deleteAccountDescription": "Once your account is deleted, all of its resources and data will be permanently deleted.",
+    "deleteAccount": "Delete account"
+  },
+  "PrivacyPolicyModal": {
+    "title": "Privacy Policy",
+    "reject": "Reject",
+    "accept": "Accept"
+  },
+  "LegalNoticeModal": {
+    "title": "Legal Notice",
+    "showAgain": "Don't show this again",
+    "notice": "This platform is not a substitute for patient-provider decision making. By clicking Accept, you understand that responses are intended to be informative, are AI-based, and should get more precise over time.",
+    "reject": "Reject",
+    "accept": "Accept"
+  },
+  "DeleteReportConfirmationModal": {
+    "title": "Delete report",
+    "message": "Are you sure you want to delete this report? This action is irreversible.",
+    "cancel": "Cancel",
+    "confirm": "Delete report"
+  },
+  "DeleteAccountConfirmationModal": {
+    "title": "Delete account",
+    "message": "Are you sure you want to delete your account and all the related data? Once your account is deleted, all of its resources and data will be permanently deleted.",
+    "cancel": "Cancel",
+    "confirm": "Delete account"
+  },
+  "DeleteUserConfirmationModal": {
+    "title": "Delete user",
+    "message": "Are you sure you want to delete this user's account and all the related data? Once the account is deleted, all of its resources and data will be permanently deleted.",
+    "cancel": "Cancel",
+    "confirm": "Delete user"
+  }
+}

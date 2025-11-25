@@ -1,0 +1,191 @@
+{
+  "Navigation": {
+    "home": "Inicio",
+    "chat": "Chat",
+    "signIn": "Iniciar sesión",
+    "admin": "Administrador"
+  },
+  "HomePage": {
+    "title": "Vacúnate *highlight* a tu manera.",
+    "highlight": "Conocimiento.",
+    "subtitle": "Impulsado por IA, rápido, confiable y amigable con el paciente.",
+    "button": "¡Regístrate ahora!"
+  },
+  "SignInPage": {
+    "title": "¡Bienvenido de nuevo!",
+    "subtitle": "Inicia sesión para acceder a tu asistente de salud personalizado.",
+    "fields": {
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "newAccount": "¿Crear una nueva cuenta?",
+      "forgetPassword": "¿Olvidaste tu contraseña?"
+    },
+    "button": "Iniciar sesión"
+  },
+  "SignUpPage": {
+    "title": "¡Únete hoy!",
+    "subtitle": "Crea tu cuenta para comenzar tu viaje de salud.",
+    "fields": {
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "phone": "Teléfono",
+      "birthYear": "Año de nacimiento",
+      "country": "País",
+      "state": "Estado",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "alreadyAccount": "¿Ya tienes una cuenta?",
+      "privacyPolicyText": "Al hacer clic en registrarte, aceptas nuestra",
+      "privacyPolicyLink": "Política de privacidad"
+    },
+    "button": "Registrarse"
+  },
+  "AdminNavigation": {
+    "Users": "Usuarios",
+    "Reports": "Reportes"
+  },
+  "AdminUsersPage": {
+    "title": "Usuarios",
+    "subtitle": "Gestiona usuarios y sus datos.",
+    "table": {
+      "NAME": "NOMBRE",
+      "STATUS": "ESTADO",
+      "ROLE": "ROL",
+      "ACTIONS": "ACCIONES"
+    },
+    "tooltip": {
+      "chatHistory": "Historial de chat",
+      "resetPassword": "Restablecer contraseña",
+      "delete": "Eliminar usuario"
+    }
+  },
+  "AdminReportsPage": {
+    "title": "Reportes",
+    "subtitle": "Ver y gestionar reportes.",
+    "table": {
+      "TITLE": "TÍTULO",
+      "REPORTED_BY": "REPORTADO POR",
+      "REPORTED_ON": "REPORTADO EL",
+      "STATUS": "ESTADO",
+      "ACTIONS": "ACCIONES"
+    },
+    "tooltip": {
+      "details": "Detalles",
+      "delete": "Eliminar reporte"
+    }
+  },
+  "ChatsPage": {
+    "chatHistory": "Historial de chat",
+    "conversation": "Conversación",
+    "noConversation": "No se encontraron conversaciones.",
+    "startNewConversation": "Iniciar una nueva conversación",
+    "initialMessage": "¡Hola! Soy Aiden, aquí para responder todas tus preguntas sobre vacunas. ¿En qué podemos ayudar? Si crees que la respuesta no es precisa o no cumple con los estándares, ¡háznoslo saber!",
+    "refer": {
+      "title": "Recomendar a un amigo",
+      "description": "¿Conoces a alguien que se beneficiaría de VaxSupport? ¡Compártelo con ellos!",
+      "button": "¡Compartir ahora!"
+    },
+    "feedback": {
+      "title": "Enviar comentarios",
+      "description": "¿Hubo una respuesta que no fue útil o clara? ¡Cuéntanoslo!",
+      "button": "Enviar comentarios"
+    },
+    "enhancements": {
+      "title": "Mejoras",
+      "description": "¿Hay alguna función que te gustaría ver para mejorar las decisiones sobre vacunas?",
+      "button": "Solicitar mejoras"
+    }
+  },
+  "ProfileDropdown": {
+    "signedInAs": "Conectado como",
+    "mySettings": "Mi perfil",
+    "report": "Reportar un problema",
+    "logOut": "Cerrar sesión"
+  },
+  "ResetPasswordConfirmationModal": {
+    "title": "Restablecer contraseña del usuario",
+    "message": "¿Estás seguro de que deseas restablecer la contraseña de este usuario? Esta acción es irreversible.",
+    "cancel": "Cancelar",
+    "confirm": "Restablecer contraseña"
+  },
+  "ViewReportModal": {
+    "modalTitle": "Detalles del reporte",
+    "title": "Título",
+    "description": "Descripción",
+    "close": "Cerrar",
+    "markAsResolved": "Marcar como resuelto",
+    "markAsOpen": "Marcar como abierto"
+  },
+  "ReportIssueModal": {
+    "modalTitle": "Reportar un problema",
+    "title": "Título",
+    "description": "Descripción",
+    "cancel": "Cancelar",
+    "confirm": "Reportar"
+  },
+  "ShareWithFriendModal": {
+    "modalTitle": "Compartir con un amigo",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "cancel": "Cancelar",
+    "confirm": "Enviar"
+  },
+  "ForgetPasswordModal": {
+    "modalTitle": "Restablecer contraseña",
+    "email": "Correo electrónico",
+    "cancel": "Cancelar",
+    "confirm": "Restablecer"
+  },
+  "ProfilePage": {
+    "profileTitle": "Información del perfil",
+    "profileDescription": "Ver y editar la información de tu perfil.",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "cancel": "Cancelar",
+    "updateProfile": "Actualizar perfil",
+    "privacyTitle": "Privacidad",
+    "currentPassword": "Contraseña actual",
+    "newPassword": "Nueva contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "privacyDescription": "Controla tu configuración de privacidad.",
+    "updatePassword": "Actualizar contraseña",
+    "myReportsTitle": "Mis reportes",
+    "myReportsDescription": "Problemas que has reportado y su estado actual.",
+    "deleteAccountTitle": "Eliminar cuenta",
+    "deleteAccountDescription": "Una vez que tu cuenta sea eliminada, todos sus datos se borrarán permanentemente.",
+    "deleteAccount": "Eliminar cuenta"
+  },
+  "PrivacyPolicyModal": {
+    "title": "Política de privacidad",
+    "reject": "Rechazar",
+    "accept": "Aceptar"
+  },
+  "LegalNoticeModal": {
+    "title": "Aviso legal",
+    "showAgain": "No mostrar esto de nuevo",
+    "notice": "Esta plataforma no sustituye la toma de decisiones entre el paciente y el proveedor. Al hacer clic en Aceptar, entiendes que las respuestas son informativas, están basadas en IA y mejorarán con el tiempo.",
+    "reject": "Rechazar",
+    "accept": "Aceptar"
+  },
+  "DeleteReportConfirmationModal": {
+    "title": "Eliminar reporte",
+    "message": "¿Estás seguro de que deseas eliminar este reporte? Esta acción es irreversible.",
+    "cancel": "Cancelar",
+    "confirm": "Eliminar reporte"
+  },
+  "DeleteAccountConfirmationModal": {
+    "title": "Eliminar cuenta",
+    "message": "¿Estás seguro de que deseas eliminar tu cuenta y todos los datos relacionados? Una vez eliminada, toda su información se borrará permanentemente.",
+    "cancel": "Cancelar",
+    "confirm": "Eliminar cuenta"
+  },
+  "DeleteUserConfirmationModal": {
+    "title": "Eliminar usuario",
+    "message": "¿Estás seguro de que deseas eliminar la cuenta de este usuario y todos los datos relacionados? Una vez eliminada, toda su información se borrará permanentemente.",
+    "cancel": "Cancelar",
+    "confirm": "Eliminar usuario"
+  }
+}
