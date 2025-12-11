@@ -74,6 +74,7 @@ export default function ChatPage() {
   const [isMessagesLoading, setIsMessagesLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [limitReached, setLimitReached] = useState(false);
+  const [deletingConversationId, setDeletingConversationId] = useState<string | null>(null);
 
   // --- streaming bits ---
   const streamAbortRef = useRef<AbortController | null>(null);
@@ -145,16 +146,54 @@ export default function ChatPage() {
 
   const sendMessage = async () => {
     if (messageText.trim().length === 0 || streaming) return;
-    if (!selectedConversationId){
-      console.log("no convid")
-      return;
-    }
+    
     try {
       setStreaming(true);
       setIsMessageSentLoading(true);
 
       // Ensure we have a conversation
       let convoId = selectedConversationId;
+      let isNewConversation = false;
+      
+      // If no conversation selected, create one first
+      if (!convoId) {
+        console.log("Creating new conversation...");
+        isNewConversation = true;
+        
+        const newConversation = await axiosInstance.post("/chat/conversation", {
+          title: messageText.trim(),
+        });
+        
+        convoId = newConversation?.data?.conversationId || null;
+        
+        if (!convoId) {
+          throw new Error("Failed to create conversation");
+        }
+        console.log("New conversation ID:", convoId);
+        
+        // Add to conversations list
+        const newConversations = { ...conversations };
+        newConversations.today.unshift({
+          ...newConversation?.data,
+          _id: convoId
+        });
+        setConversations(newConversations);
+        setSelectedConversationId(convoId);
+        
+        // Reset messages for the new conversation with initial bot message
+        setMessages([
+          {
+            _id: "initial_message",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            text: t("initialMessage"),
+            conversationId: convoId,
+            sender: "bot",
+          },
+        ]);
+        
+        console.log("Created new conversation", convoId);
+      }
       // if (!convoId) {
       //   console.log("Creating new conversation...");
 
@@ -276,11 +315,6 @@ export default function ChatPage() {
       //   },
       // });
       // }
-      if (!convoId){
-        return;
-      }
-
-      else {
 
       // 1) Add user's message (temp)
       const userTempId = `user_${Date.now()}`;
@@ -307,7 +341,10 @@ export default function ChatPage() {
       currentBotIdRef.current = botTempId; // mark the streaming bubble
 
       setMessageText("");
+      
+      // Add user message and bot placeholder
       setMessages((prev) => [...prev, userDummy, botDummy]);
+      
       setTimeout(() => scrollToBottom(chatContainerRef), 50);
 
       // 3) Start streaming from backend
@@ -382,7 +419,7 @@ export default function ChatPage() {
           currentBotIdRef.current = null; // clear the streaming marker
           setTimeout(() => scrollToBottom(chatContainerRef), 50);
         },
-      });}
+      });
     } catch (e: any) {
       console.error(e);
       setIsMessageSentLoading(false);
@@ -422,7 +459,14 @@ export default function ChatPage() {
       setIsMessagesLoading(false);
     }
   };
+const getLastObjectId = (data) => {
+  // .at(-1) gets the last item
+  // ?._id uses optional chaining in case the array is empty
+  return data.at(-1)?._id;
+};
 
+// Example Usage:
+// Output: "693b232314ace67f876911ba"
   const fetchConversations = async () => {
     try {
       setIsConversationsLoading(true);
@@ -430,11 +474,22 @@ export default function ChatPage() {
 
       if (res?.data) {
         const categorized = arrangeConversationsReturn(res?.data);
+        console.log("res data:", res?.data);
         setConversations(categorized);
-        // Select first conversation from Today if exists
-        if (categorized.today.length > 0) {
-          setSelectedConversationId(categorized.today[0]._id);
+        const conversationsData = res?.data; 
+      
+        const lastConvoId = conversationsData.length > 0 ? conversationsData[conversationsData.length - 1]._id : null;
+        // --- FIX ENDS HERE ---
+
+        if (lastConvoId) {
+          console.log("Fetching more starting from:", lastConvoId);
+          setSelectedConversationId(lastConvoId);
+        } else {
+          console.log("No ID found");
         }
+
+        // console.log("Fetched conversations:", res.data);
+        // Don't auto-select any conversation - let user choose
       }
     } catch (e) {
       console.error("Error fetching conversations:", e);
@@ -469,6 +524,38 @@ export default function ChatPage() {
       );
     });
     return categorizedConversations;
+  };
+
+  const handleDeleteConversation = async (conversationId: string) => {
+    if (deletingConversationId) return;
+    try {
+      setDeletingConversationId(conversationId);
+      await axiosInstance.delete(`/chat/conversation/${conversationId}`);
+
+      setConversations((prev) => ({
+        today: prev.today.filter((c) => c._id !== conversationId),
+        last7Days: prev.last7Days.filter((c) => c._id !== conversationId),
+        older: prev.older.filter((c) => c._id !== conversationId),
+      }));
+
+      if (selectedConversationId === conversationId) {
+        setSelectedConversationId(null);
+        setMessages([
+          {
+            _id: "initial_message",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            text: t("initialMessage"),
+            conversationId: "",
+            sender: "bot",
+          },
+        ]);
+      }
+    } catch (e) {
+      console.error("Error deleting conversation", e);
+    } finally {
+      setDeletingConversationId(null);
+    }
   };
 
   // For modal: create conversation with title only
@@ -588,6 +675,8 @@ export default function ChatPage() {
                   key={conversation._id}
                   selected={selectedConversationId === conversation._id}
                   title={conversation.title}
+                  onDelete={() => handleDeleteConversation(conversation._id)}
+                  isDeleting={deletingConversationId === conversation._id}
                   onClick={() => setSelectedConversationId(conversation._id)}
                 />
               ))}
@@ -600,6 +689,8 @@ export default function ChatPage() {
                   key={conversation._id}
                   selected={selectedConversationId === conversation._id}
                   title={conversation.title}
+                  onDelete={() => handleDeleteConversation(conversation._id)}
+                  isDeleting={deletingConversationId === conversation._id}
                   onClick={() => setSelectedConversationId(conversation._id)}
                 />
               ))}
@@ -612,6 +703,8 @@ export default function ChatPage() {
                   key={conversation._id}
                   selected={selectedConversationId === conversation._id}
                   title={conversation.title}
+                  onDelete={() => handleDeleteConversation(conversation._id)}
+                  isDeleting={deletingConversationId === conversation._id}
                   onClick={() => setSelectedConversationId(conversation._id)}
                 />
               ))}
@@ -668,6 +761,8 @@ export default function ChatPage() {
                     key={conversation._id}
                     selected={selectedConversationId === conversation._id}
                     title={conversation.title}
+                    onDelete={() => handleDeleteConversation(conversation._id)}
+                    isDeleting={deletingConversationId === conversation._id}
                     onClick={() => {
                       setSelectedConversationId(conversation._id);
                       setIsMenuOpen(false);
@@ -683,6 +778,8 @@ export default function ChatPage() {
                     key={conversation._id}
                     selected={selectedConversationId === conversation._id}
                     title={conversation.title}
+                    onDelete={() => handleDeleteConversation(conversation._id)}
+                    isDeleting={deletingConversationId === conversation._id}
                     onClick={() => {
                       setSelectedConversationId(conversation._id);
                       setIsMenuOpen(false);
@@ -698,6 +795,8 @@ export default function ChatPage() {
                     key={conversation._id}
                     selected={selectedConversationId === conversation._id}
                     title={conversation.title}
+                    onDelete={() => handleDeleteConversation(conversation._id)}
+                    isDeleting={deletingConversationId === conversation._id}
                     onClick={() => {
                       setSelectedConversationId(conversation._id);
                       setIsMenuOpen(false);
