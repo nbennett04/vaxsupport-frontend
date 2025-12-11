@@ -459,11 +459,6 @@ export default function ChatPage() {
       setIsMessagesLoading(false);
     }
   };
-const getLastObjectId = (data) => {
-  // .at(-1) gets the last item
-  // ?._id uses optional chaining in case the array is empty
-  return data.at(-1)?._id;
-};
 
 // Example Usage:
 // Output: "693b232314ace67f876911ba"
